@@ -26,6 +26,7 @@ def viable_word(guess_word, result, dict_word):
         for i in greens:
             if guess_word[i] != dict_word[i]:
                 return False
+            dict_word = dict_word[:i] + '_' + dict_word[i + 1:]
             
     yellows = [i.start() for i in re.finditer('Y', result)]
     if yellows:
@@ -147,9 +148,10 @@ if __name__ == "__main__":
     #     information_dict[word] = test.two_layer_information(word)
     #     print("Finished checking " + word + ", information: " + str(information_dict[word]))
     # print(dict(sorted(information_dict.items(), key=lambda item: item[1], reverse=True)[:20]))
-    test.filter("LEAST", "BYBBB")
-    test.filter("DRONE", "YBBGY")
-    for word in test.officical_answers:
-        information_dict[word] = test.information(word)
-        print("Finished checking " + word + ", information: " + str(information_dict[word]))
-    print(dict(sorted(information_dict.items(), key=lambda item: item[1], reverse=True)[:20]))
+    # test.filter("LEAST", "BYBBB")
+    # test.filter("DRONE", "YBBGY")
+    # for word in test.officical_answers:
+    #     information_dict[word] = test.information(word)
+    #     print("Finished checking " + word + ", information: " + str(information_dict[word]))
+    # print(dict(sorted(information_dict.items(), key=lambda item: item[1], reverse=True)[:20]))
+    print(viable_word("GOODY", "BGBBG", "HOBBY"))
